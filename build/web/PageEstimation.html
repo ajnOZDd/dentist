@@ -1,0 +1,117 @@
+<%@page import="model.Specialite"%>
+<%@page import="model.Poste"%>
+<%@page import="java.awt.Point"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    <%
+    	ArrayList<Poste> allPoste = (ArrayList<Poste>) request.getAttribute("postes");
+    	ArrayList<Specialite> allSpecialite = (ArrayList<Specialite>) request.getAttribute("specialites");
+    %>
+    
+	<%-- 
+    Document   : accueil_client
+    Created on : 24 fevr. 2023, 10:35:43
+    Author     : allan
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="./assets/css/main.css" rel="stylesheet"  >
+        <!-- animate min css -->
+        <link href="./assets/css/animate.min.css" rel="stylesheet" >
+        <script src="./assets/js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="./assets/js/vendor/modernizr-2.8.3.min.js" ></script>
+
+    </head>
+    <body>
+                    <div id="preloader">
+            <div id="status"></div>
+        </div>
+        <div class="hero">
+            <div class="wrap">
+                <nav>
+                    <div class="navi">
+                    <a href="#" class="toggle">Menu</a>
+                    <ul>
+                        <li><a href="#menu" class="smooth"><i class="fa fa-cutlery" aria-hidden="true"></i>service</a></li>
+                        <li><a href="./acceuil_admin.jsp" class="smooth"><i class="fa fa-info" aria-hidden="true"></i>admin</a></li>
+                        <li><a href="#map" class="smooth"><i class="fa fa-map-marker" aria-hidden="true"></i>Acheter des produits</a></li>
+                        <li><a href="#map" class="smooth"><i class="fa fa-map-marker" aria-hidden="true"></i>facture</a></li>
+
+                    </ul>
+                    <a class="logo" href="./accueil_client.jsp"><img src="./assets/img/57015.jpg"></a>
+                    </div>
+                </nav>
+                <div class="heading">
+                <h2 class="wow fadeInRight" data-wow-delay="1s">BEST reparation IN TOWN</h2>
+
+                <p class="wow fadeInRight" data-wow-delay="1s">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim distinctio, 
+                    qui modi blanditiis quidem explicabo veniam nesciunt pariatur officiis atque, 
+                    sit dignissimos sequi cum, recusandae praesentium illum ut molestias magnam?
+                </p>
+
+                
+                </div>
+            </div>
+        </div>
+        <section class="light parallax" id="menu">
+            <div class="wrap menu">
+            <h2 class="brn wow fadeInLeft">Produits disponible</h2>
+            <div class="menu-card wow fadeInUp">
+                <div class="card">
+                    
+                    <form action="Control" method="post">
+						<div class="container">
+
+        <form class="estimation-form" method="post">
+             
+        <% for (Specialite specialite : allSpecialite) { %>
+
+            <label for="duree"><%= specialite.getSpecialite_label() %></label>
+
+               <input type="number" name="<%= specialite.getSpecialite_id() %>" id="duree" value="0">
+
+         <% } %>
+
+            <input type="submit" value="Estimer">
+
+    </form>
+
+         <% if (request.getAttribute("estimation") != null){
+
+            double estimation = (Double) request.getAttribute("estimation");
+
+        %>
+
+       <p>Estimation du service: <%= estimation %></p>
+
+        <% } %>
+
+    </div>
+                 </div>
+             </div> <!-- Menu card DIV end -->
+        </div><!-- Wrapper end -->
+        </section> <!-- Menu section end -->
+        <footer class="wow fadeIn">
+            <ul class="social">
+                <li><a href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                <li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            </ul>
+        </footer>
+        <script>window.jQuery || document.write('<script src="./assets/js/vendor/jquery-1.11.2.min.js"><\script>')</script>
+        <!-- initialize wow -->
+        <script src="./assets/js/main.js" defer></script>
+        <script src="./assets/js/wow.min.js"></script>
+        <script> new WOW().init(); </script>
+    </body>
+</html>

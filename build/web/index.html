@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link href="./assets/css/all.css" rel="stylesheet"  >
+        <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="./assets/css/animate.min.css" rel="stylesheet" >
+        <script src="./assets/js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="./assets/js/vendor/modernizr-2.8.3.min.js" ></script>
+      
+    </head>
+    <body class="body">
+        <div id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <main>
+                    <div class="container wow fadeIn">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                                    <div class="card-body ">
+                                        <form action="./ControllerLogin" method="post">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" id="username"class="input_login" placeholder="name" name="name" value="<%if(request.getSession().getAttribute("name")!=null){out.println(request.getSession().getAttribute("name"));}%>" required >
+                                                <label for="name">name</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="password" id="loginCheck"class="input_login" placeholder="password" name="password"value="<%if(request.getSession().getAttribute("password")!=null){out.println(request.getSession().getAttribute("password"));}%>" required >
+                                                <label for="inputPassword">Password</label>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                                <a class="small" href="password.html">Forgot Password?</a>
+                                                <input type="submit" class="btn btn-primary" href="index.html">
+                                            </div>
+                                         </form> 
+                                    </div>
+                                    <div class="card-footer text-center py-3">
+                                        <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        <script>window.jQuery || document.write('<script src="./assets/js/vendor/jquery-1.11.2.min.js"><\script>')</script>
+        <!-- initialize wow -->
+        <s src="./assets/js/main.js" defer></s>
+        <script src="./assets/js/wow.min.js"></script>
+        <script> new WOW().init(); </script>
+    </body>
+</html>
